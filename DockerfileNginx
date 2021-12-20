@@ -1,0 +1,6 @@
+FROM nginx:1.21
+
+RUN cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
+    && echo "Asia/Taipei" > /etc/timezone
+
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf

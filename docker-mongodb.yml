@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  mongodb:
+    image: bitnami/mongodb:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb_data:/bitnami/mongodb
+      # - ./mongodb-configuration-persistence:/bitnami/mongodb/conf
+    networks:
+      - app-tier
+    environment:
+      # - ALLOW_EMPTY_PASSWORD=yes
+      # - MONGODB_SYSTEM_LOG_VERBOSITY=3
+      # - MONGODB_ENABLE_IPV6=yes
+      - MONGODB_ROOT_USER=venus
+      - MONGODB_ROOT_PASSWORD=password
+      - MONGODB_EXTRA_FLAGS=--wiredTigerCacheSizeGB=2
+      - MONGODB_ENABLE_DIRECTORY_PER_DB=yes
+      # - MONGODB_USERNAME=venus
+      # - MONGODB_PASSWORD=password
+      # - MONGODB_DATABASE=venus
+
+  # mongodb-offcial:
+  #   image: mongo:5.0
+  #   ports:
+  #     - "27017:27017"
+  #   networks:
+  #     - app-tier
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=venus
+  #     - MONGO_INITDB_ROOT_PASSWORD=password
+  #     - MONGO_INITDB_DATABASE=venus
+
+networks:
+  app-tier:
+    driver: bridge

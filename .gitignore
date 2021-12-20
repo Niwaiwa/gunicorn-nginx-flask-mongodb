@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.vscode
+venv
+.idea
+*.log
+*.pyc
+/*.env
+*.log.*
+/tmp/*
+.devcontainer
+.pytest_cache
+mongodb_data

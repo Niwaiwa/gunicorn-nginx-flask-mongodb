@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  redis:
+    image: bitnami/redis:6.2
+    ports:
+      - "6999:6379"
+    # volumes:
+      # - ./redis_data:/bitnami/redis/data
+    networks:
+      - app-tier
+    environment:
+      - REDIS_PASSWORD=password
+      # - ALLOW_EMPTY_PASSWORD=yes
+      # - REDIS_AOF_ENABLED=no
+    command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
+
+networks:
+  app-tier:
+    driver: bridge
